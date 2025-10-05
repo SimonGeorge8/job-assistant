@@ -70,7 +70,7 @@ Quality"""
 
 
 response = client.analyze_job_posting(job_content, "https://google.com")
-s
+
 
 print(response)
 

@@ -59,45 +59,119 @@ class Database:
         
         if count == 0:
             # Default cover letter template
-            default_cover_letter = """Dear Hiring Manager,
-
-I am writing to express my strong interest in the {position_title} position at {company_name}. With my background in software development and passion for technology, I am excited about the opportunity to contribute to your team.
-
-{personalized_content}
-
-I am particularly drawn to {company_name} because of {company_reasons}. I believe my skills in {relevant_skills} make me an ideal candidate for this role.
-
-Thank you for considering my application. I look forward to discussing how I can contribute to your team's success.
-
-Best regards,
-[Your Name]"""
+            default_cover_letter = """{
+    "greeting": "Dear Hiring Manager,",
+    "opening_paragraph": "I am writing to express my interest in joining your development team as a Software Engineer. As a recent Computer Science graduate from Reichman University with a lifelong passion for technology, I am excited to contribute my technical skills and innovative mindset to your organization.",
+    "technical_expertise": "My technical expertise spans multiple programming languages including Python, Java, JavaScript, and frameworks like React.js and FastAPI. I have hands-on experience building full-stack applications, implementing AI-powered solutions, and working with cloud architecture using Kubernetes and Docker. Recent projects include developing real-time transcription applications, AI recommendation systems, and distributed portfolio management platforms.",
+    "leadership_and_background": "Beyond technical skills, my leadership experience as Head of IT Department at Maccabi Community Leadership has strengthened my communication and mentoring abilities. I am fluent in English and Spanish with dual nationality (Panama/Spain-EU).",
+    "motivation_and_passion": "What drives me is a genuine passion for technology that has been with me since childhood. I chose to study in Israel specifically because of its reputation for innovation, and this environment has further fueled my enthusiasm for creating impactful technological solutions.",
+    "closing_paragraph": "I would welcome the opportunity to discuss how my technical skills, international background, and passion for software development can contribute to your team's success.",
+    "signature": "Sincerely,\\nSimon George Abadi",
+    "key_highlights": {
+        "education": "Recent Computer Science graduate from Reichman University",
+        "programming_languages": ["Python", "Java", "JavaScript"],
+        "frameworks": ["React.js", "FastAPI"],
+        "technical_skills": ["Full-stack applications", "AI-powered solutions", "Cloud architecture", "Kubernetes", "Docker"],
+        "recent_projects": ["Real-time transcription applications", "AI recommendation systems", "Distributed portfolio management platforms"],
+        "leadership": "Head of IT Department at Maccabi Community Leadership",
+        "soft_skills": ["Communication", "Mentoring"],
+        "languages": ["English (Native)", "Spanish (Native)"],
+        "nationalities": ["Panama", "Spain-EU"],
+        "location_choice": "Studied in Israel for its reputation for innovation",
+        "core_motivation": "Lifelong passion for technology since childhood"
+    }
+}"""
             
             # Default resume content (simplified)
             default_resume = """{
-    "name": "John Doe",
-    "email": "john.doe@email.com",
-    "phone": "(555) 123-4567",
+    "name": "Simon George Abadi",
+    "email": "simon.abadi@icloud.com",
+    "phone": "+34 655 862 801",
+    "linkedin": "www.linkedin.com/in/simon-abadi",
     "skills": [
-        "Python", "JavaScript", "React", "Flask", "Docker", 
-        "Git", "SQL", "REST APIs", "Machine Learning"
+        "Python", "Java", "Haskell", "JavaScript", "C",
+        "React.js", "Flask", "FastAPI", "Firebase", "Numpy", "Pandas",
+        "Full Stack Dev", "Backend Developer", "DevOps", "Functional Programming",
+        "Docker", "Kubernetes", "RESTful APIs", "NGINX", "Microservices Architecture",
+        "Machine Learning", "Cloud Computing", "Software Engineering", "AI",
+        "OpenAI Embeddings API", "Cosine Similarity", "Vector Search Optimization",
+        "Distributed Systems", "Containerization", "Cloud Architecture",
+        "HTML", "CSS", "Network Setup", "Troubleshooting", "Hardware Maintenance"
+    ],
+    "coursework": [
+        "Software Development using AI",
+        "Cloud Computing and Software Engineering",
+        "Numerical Optimization in Python",
+        "Machine Learning",
+        "Algorithms",
+        "Operating Systems",
+        "Functional Programming",
+        "Complexity Theory"
+    ],
+    "projects": [
+        {
+            "title": "AI Show Recommendation",
+            "role": "Developer",
+            "duration": "December 2024",
+            "description": "Engineered a sophisticated content recommendation algorithm using OpenAI's embeddings API to transform TV show descriptions into semantic vector embeddings, Implementing cosine similarity calculations and vector search optimization to enable precise content matching with 95%+ accuracy."
+        },
+        {
+            "title": "Cloud-Based Portfolio Management Application",
+            "role": "Developer",
+            "duration": "November 2024 - March 2025",
+            "description": "Architected and deployed a distributed portfolio management system utilizing Kubernetes, Docker containers, and microservices architecture. Implemented RESTful API endpoints and configured NGINX as a proxy server to ensure secure and efficient communication between services. Applied cloud architecture principles to build a scalable application with emphasis on containerization and distributed systems design."
+        }
     ],
     "experience": [
         {
-            "title": "Software Developer",
-            "company": "Tech Company",
-            "duration": "2020-Present",
-            "description": "Developed web applications using Python and JavaScript"
+            "title": "Volunteer in Logistics and Fundraising",
+            "company": "Guinness World Record 'Largest Fried Plantain'",
+            "location": "Panama City, Panama",
+            "duration": "October 2019",
+            "description": "Planned logistics for 'PataRun,' 3km marathon, coordinating with 11 sponsors and 6 advertising outlets to raise funds for the main event."
+        },
+        {
+            "title": "Head of IT Department & Youth Leader",
+            "company": "Maccabi Community Leadership",
+            "location": "Panama City, Panama",
+            "duration": "January 2018 - August 2021",
+            "description": "Managed IT operations, including network setup, troubleshooting, and hardware maintenance for the whole organization. Led the design and development of the organization's first official website using HTML and CSS, establishing their initial digital presence and online community engagement platform. Served as youth leader, mentoring young community members while simultaneously overseeing technology initiatives that enhanced educational and recreational programming."
         }
     ],
     "education": [
         {
             "degree": "Bachelor of Science in Computer Science",
-            "school": "University Name",
-            "year": "2020"
+            "school": "Reichman University",
+            "year": "August 2022 - July 2025"
+        },
+        {
+            "degree": "High School Diploma",
+            "school": "MDA",
+            "location": "Panama City, Panama",
+            "year": "June 2022"
         }
+    ],
+    "awards": [
+        "Maccabi Community Leadership",
+        "AP Scholar Award",
+        "AP Seminar and Research Certificate Award"
+    ],
+    "languages": [
+        "English (Fluent)",
+        "Spanish (Fluent)"
+    ],
+    "nationalities": [
+        "Panama",
+        "Spain (EU)"
+    ],
+    "interests": [
+        "Programming",
+        "Artificial Intelligence (AI)",
+        "Robotics",
+        "Running",
+        "Guitar"
     ]
 }"""
-            
             conn.execute('''
                 INSERT INTO templates (type, name, content) 
                 VALUES (?, ?, ?)
